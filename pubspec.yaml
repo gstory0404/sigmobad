@@ -1,0 +1,30 @@
+name: sigmobad
+description: sigmob广告flutter版
+version: 0.0.1
+homepage: https://github.com/gstory0404/sigmobad
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.20.0"
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  plugin_platform_interface: ^2.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+#  flutter_lints: ^2.0.0
+
+
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.gstory.sigmobad
+        pluginClass: SigmobadPlugin
+      ios:
+        pluginClass: SigmobadPlugin
