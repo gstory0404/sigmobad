@@ -101,6 +101,7 @@ class _HomePageState extends State<HomePage> {
       //是否显示个性化推荐广告
       personalized: true,
     );
+    print("初始化==》$_isRegister");
     _sdkVersion = await SigmobAd.getSDKVersion();
     setState(() {});
   }
@@ -128,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                   //ios广告id
                   iosId: "ea1f8f7b662",
                   //用户id
-                  userID: "123",
+                  userId: "123",
                   //奖励
                   rewardName: "100金币",
                   //奖励数
@@ -160,6 +161,8 @@ class _HomePageState extends State<HomePage> {
                   androidId: "ea1f8f45d80",
                   //ios广告id
                   iosId: "ea1f8fb93fb",
+                  //用户id
+                  userId: "123",
                 );
               },
             ),

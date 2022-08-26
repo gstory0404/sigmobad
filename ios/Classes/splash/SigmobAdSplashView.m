@@ -46,6 +46,7 @@
 @property(nonatomic,assign) NSInteger fetchDelay;
 @property(nonatomic,assign) NSInteger width;
 @property(nonatomic,assign) NSInteger height;
+@property(nonatomic,strong) NSString *userId;
 @end
 
 #pragma mark - SigmobAdSplashView
@@ -56,6 +57,7 @@
         NSDictionary *dic = args;
         self.viewId = viewId;
         self.codeId = dic[@"iosId"];
+        self.userId = dic[@"userId"];
         self.fetchDelay =[dic[@"fetchDelay"] intValue];
         self.width =[dic[@"width"] intValue];
         self.height =[dic[@"height"] intValue];
@@ -75,6 +77,7 @@
     [self.container removeFromSuperview];
     WindAdRequest *request = [WindAdRequest request];
     request.placementId = self.codeId;
+    request.userId = self.userId;
     self.splashView = [[WindSplashAdView alloc] initWithRequest:request];
     self.splashView.frame = CGRectMake(0, 0,self.width, self.height);
     self.splashView.delegate = self;

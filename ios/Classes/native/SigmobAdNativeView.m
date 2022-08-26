@@ -46,6 +46,7 @@
 @property(nonatomic,strong) NSString *codeId;
 @property(nonatomic,assign) NSInteger width;
 @property(nonatomic,assign) NSInteger height;
+@property(nonatomic,strong) NSString *userId;
 @end
 
 #pragma mark - SigmobAdNativeView
@@ -56,8 +57,9 @@
         NSDictionary *dic = args;
         self.viewId = viewId;
         self.codeId = dic[@"iosId"];
-        self.width =[dic[@"viewWidth"] intValue];
-        self.height =[dic[@"viewHeight"] intValue];
+        self.width =[dic[@"width"] intValue];
+        self.height =[dic[@"height"] intValue];
+        self.userId = dic[@"userId"];
         NSString* channelName = [NSString stringWithFormat:@"com.gstory.sigmobad/NativeView_%lld", viewId];
         self.channel = [FlutterMethodChannel methodChannelWithName:channelName binaryMessenger:messenger];
         self.container = [[UIView alloc] initWithFrame:frame];
@@ -74,7 +76,7 @@
     [self.container removeFromSuperview];
     WindAdRequest *request = [WindAdRequest request];
     request.placementId = self.codeId;
-    request.userId = @"";
+    request.userId = self.userId;
     self.nativeAdsManager = [[WindNativeAdsManager alloc] initWithRequest:request];
     self.nativeAdsManager.delegate = self;
     [self.nativeAdsManager loadAdDataWithCount:1];

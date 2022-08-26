@@ -15,7 +15,7 @@
 
 @property(nonatomic,strong) WindIntersititialAd *intersititialAd;
 @property(nonatomic,strong) NSString *codeId;
-
+@property(nonatomic,strong) NSString *userId;
 @end
 
 @implementation SigmobInterstitialAd
@@ -32,8 +32,9 @@
 -(void)loadAd:(NSDictionary*)arguments{
     NSDictionary *dic = arguments;
     self.codeId = dic[@"iosId"];
+    self.userId = dic[@"userId"];
     WindAdRequest *request = [WindAdRequest request];
-    request.userId = @"";
+    request.userId = self.userId;
     request.placementId = self.codeId;
     self.intersititialAd = [[WindIntersititialAd alloc] initWithRequest:request];
     self.intersititialAd.delegate = self;

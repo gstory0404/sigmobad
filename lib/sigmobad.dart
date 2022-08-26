@@ -7,9 +7,9 @@ import 'package:flutter/services.dart';
 
 part 'sigmobad_callback.dart';
 part 'sigmobad_code.dart';
-part 'sigmobad_native_widget.dart';
+part 'widget/sigmobad_native_widget.dart';
 part 'sigmobad_stream.dart';
-part 'sigmobad_splash_widget.dart';
+part 'widget/sigmobad_splash_widget.dart';
 
 class SigmobAd {
   static const MethodChannel _channel = MethodChannel('sigmobad');
@@ -65,7 +65,7 @@ class SigmobAd {
   ///
   /// [rewardAmount] 奖励金额
   ///
-  /// [userID] 用户id
+  /// [userId] 用户id
   ///
   /// [customData] 扩展参数，服务器回调使用
   ///
@@ -74,7 +74,7 @@ class SigmobAd {
     required String iosId,
     required String rewardName,
     required int rewardAmount,
-    required String userID,
+    required String userId,
     String? customData,
   }) async {
     return await _channel.invokeMethod("loadRewardAd", {
@@ -82,7 +82,7 @@ class SigmobAd {
       "iosId": iosId,
       "rewardName": rewardName,
       "rewardAmount": rewardAmount,
-      "userID": userID,
+      "userId": userId,
       "customData": customData ?? "",
     });
   }
@@ -101,13 +101,17 @@ class SigmobAd {
   ///
   /// [iosId] ios广告ID
   ///
+  /// [userId] 用户id
+  ///
   static Future<bool> loadInterstitialAd({
     required String androidId,
     required String iosId,
+    String? userId,
   }) async {
     return await _channel.invokeMethod("loadInterstitialAd", {
       "androidId": androidId,
       "iosId": iosId,
+      "userId": userId ?? "",
     });
   }
 

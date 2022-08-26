@@ -1,4 +1,4 @@
-part of 'sigmobad.dart';
+part of '../sigmobad.dart';
 
 /// @Author: gstory
 /// @CreateDate: 2022/8/25 10:07
@@ -8,16 +8,18 @@ part of 'sigmobad.dart';
 class SigmobAdNativeWidget extends StatefulWidget {
   final String androidId;
   final String iosId;
-  final int viewWidth;
-  final int viewHeight;
+  final double width;
+  final double height;
+  final String? userId;
   final SigmobAdNativeCallBack? callBack;
 
   const SigmobAdNativeWidget(
       {Key? key,
         required this.androidId,
         required this.iosId,
-        required this.viewWidth,
-        required this.viewHeight,
+        required this.width,
+        required this.height,
+        this.userId,
         this.callBack})
       : super(key: key);
 
@@ -39,8 +41,8 @@ class _KSAdNativeWidgetState extends State<SigmobAdNativeWidget> {
   @override
   void initState() {
     super.initState();
-    _width = widget.viewWidth.toDouble();
-    _height = widget.viewHeight.toDouble();
+    _width = widget.width;
+    _height = widget.height;
     setState(() {
 
     });
@@ -59,8 +61,9 @@ class _KSAdNativeWidgetState extends State<SigmobAdNativeWidget> {
           viewType: _viewType,
           creationParams: {
             "androidId": widget.androidId,
-            "viewWidth": widget.viewWidth,
-            "viewHeight": widget.viewHeight,
+            "width": widget.width,
+            "height": widget.height,
+            "userId":widget.userId ?? "",
           },
           onPlatformViewCreated: _registerChannel,
           creationParamsCodec: const StandardMessageCodec(),
@@ -74,8 +77,9 @@ class _KSAdNativeWidgetState extends State<SigmobAdNativeWidget> {
           viewType: _viewType,
           creationParams: {
             "iosId": widget.iosId,
-            "viewWidth": widget.viewWidth,
-            "viewHeight": widget.viewHeight,
+            "width": widget.width,
+            "height": widget.height,
+            "userId":widget.userId ?? "",
           },
           onPlatformViewCreated: _registerChannel,
           creationParamsCodec: const StandardMessageCodec(),
@@ -94,6 +98,7 @@ class _KSAdNativeWidgetState extends State<SigmobAdNativeWidget> {
 
   //监听原生view传值
   Future<dynamic> _platformCallHandler(MethodCall call) async {
+    print("${call.method} == ${call.arguments}");
     switch (call.method) {
     //显示广告
       case SigmobAdMethod.onShow:

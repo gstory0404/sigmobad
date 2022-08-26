@@ -28,10 +28,12 @@ class _NativePageState extends State<NativePage> {
               androidId: "ed70b4760ff",
               //ios广告位id
               iosId: "ed70b3615a5",
+              //用户id
+              userId: "123",
               //广告宽
-              viewWidth: 400,
+              width: 400,
               //广告高 加载成功后会自动修改为sdk返回广告高
-              viewHeight: 200,
+              height: 200,
               //广告回调
               callBack: SigmobAdNativeCallBack(
                 onShow: () {
@@ -54,9 +56,11 @@ class _NativePageState extends State<NativePage> {
               //ios广告位id
               iosId: "ed70b3615a5",
               //广告宽
-              viewWidth: 400,
+              width: 400,
               //广告高 加载成功后会自动修改为sdk返回广告高
-              viewHeight: 200,
+              height: 200,
+              //用户id
+              userId: "123",
             ),
             SigmobAdNativeWidget(
               //andorid广告位id
@@ -64,9 +68,11 @@ class _NativePageState extends State<NativePage> {
               //ios广告位id
               iosId: "ed70b3615a5",
               //广告宽
-              viewWidth: 400,
+              width: 400,
               //广告高 加载成功后会自动修改为sdk返回广告高
-              viewHeight: 200,
+              height: 200,
+              //用户id
+              userId: "123",
             )
           ],
         ),

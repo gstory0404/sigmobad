@@ -1,4 +1,4 @@
-part of 'sigmobad.dart';
+part of '../sigmobad.dart';
 
 /// @Author: gstory
 /// @CreateDate: 2022/8/25 16:49
@@ -11,6 +11,7 @@ class SigmobAdSplashWidget extends StatefulWidget {
   final int? fetchDelay;
   final double width;
   final double height;
+  final String? userId;
   final SigmobAdSplashCallBack? callBack;
 
   const SigmobAdSplashWidget(
@@ -20,6 +21,7 @@ class SigmobAdSplashWidget extends StatefulWidget {
       required this.width,
       required this.height,
       this.fetchDelay,
+      this.userId,
       this.callBack})
       : super(key: key);
 
@@ -57,6 +59,7 @@ class _SigmobAdSplashWidgetState extends State<SigmobAdSplashWidget> {
             "fetchDelay": widget.fetchDelay,
             "width": widget.width,
             "height": widget.height,
+            "userId": widget.userId ?? "",
           },
           onPlatformViewCreated: _registerChannel,
           creationParamsCodec: const StandardMessageCodec(),
@@ -73,6 +76,7 @@ class _SigmobAdSplashWidgetState extends State<SigmobAdSplashWidget> {
             "fetchDelay": widget.fetchDelay,
             "width": widget.width,
             "height": widget.height,
+            "userId": widget.userId ?? "",
           },
           onPlatformViewCreated: _registerChannel,
           creationParamsCodec: const StandardMessageCodec(),
@@ -94,7 +98,6 @@ class _SigmobAdSplashWidgetState extends State<SigmobAdSplashWidget> {
     switch (call.method) {
       //显示广告
       case SigmobAdMethod.onShow:
-        Map map = call.arguments;
         if (mounted) {
           setState(() {
             _isShowAd = true;

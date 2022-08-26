@@ -38,7 +38,7 @@
     self.codeId = dic[@"iosId"];
     self.rewardName = dic[@"rewardName"];
     self.rewardAmount = dic[@"rewardAmount"];
-    self.userId =dic[@"userID"];
+    self.userId =dic[@"userId"];
     self.customData = dic[@"customData"];
     WindAdRequest *request = [WindAdRequest request];
     request.userId = self.userId;

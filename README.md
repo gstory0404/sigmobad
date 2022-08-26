@@ -1,7 +1,7 @@
 # Sigmob广告 Flutter版本
 
 <p>
-<a href="https://pub.flutter-io.cn/packages/sigmobad"><img src=https://img.shields.io/badge/sigmobad-v0.0.1-success></a>
+<a href="https://pub.flutter-io.cn/packages/sigmobad"><img src=https://img.shields.io/badge/sigmobad-v0.0.2-success></a>
 </p>
 
 ## 官方文档
@@ -28,7 +28,7 @@
 ## 集成步骤
 #### 1、pubspec.yaml
 ```Dart
-sigmobad: ^0.0.1
+sigmobad: ^0.0.2
 ```
 引入
 ```Dart
@@ -71,6 +71,8 @@ SigmobAdNativeWidget(
     viewWidth: 400,
     //广告高 加载成功后会自动修改为sdk返回广告高
     viewHeight: 200,
+    //用户id
+    userId: "123",
     //广告回调
     callBack: SigmobAdNativeCallBack(
         onShow: () {
@@ -157,6 +159,8 @@ SigmobAdSplashWidget(
         height: MediaQuery.of(context).size.height,
         //超时时间
         fetchDelay: 5,
+        //用户id
+        userId: "123",
         callBack: SigmobAdSplashCallBack(
           onShow: () {
             print("开屏广告显示");
@@ -183,6 +187,8 @@ await SigmobAd.loadInterstitialAd(
     androidId: "ea1f8f45d80",
     //ios广告id
     iosId: "ea1f8fb93fb",
+    //用户id
+    userId: "123",
 );
 ```
 显示广告

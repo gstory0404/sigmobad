@@ -28,6 +28,8 @@ class _SplashPageState extends State<SplashPage> {
         height: MediaQuery.of(context).size.height,
         //超时时间
         fetchDelay: 5,
+        //用户id
+        userId: "123",
         callBack: SigmobAdSplashCallBack(
           onShow: () {
             print("开屏广告显示");
