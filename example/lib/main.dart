@@ -10,7 +10,6 @@ void main() {
   runApp(MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -110,13 +109,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('快手广告插件'),
+        title: const Text('Sigmob广告插件'),
       ),
       body: Center(
         child: Column(
           children: [
-            Text('快手SDK初始化: $_isRegister\n'),
-            Text('SDK版本: $_sdkVersion\n'),
+            Text('Sigmob SDK初始化: $_isRegister\n'),
+            Text('Sigmob SDK版本: $_sdkVersion\n'),
             //激励广告
             MaterialButton(
               color: Colors.blue,
