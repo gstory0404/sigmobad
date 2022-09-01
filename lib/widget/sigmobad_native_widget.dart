@@ -3,7 +3,7 @@ part of '../sigmobad.dart';
 /// @Author: gstory
 /// @CreateDate: 2022/8/25 10:07
 /// @Email gstory0404@gmail.com
-/// @Description: dart类作用描述 
+/// @Description: dart类作用描述
 
 class SigmobAdNativeWidget extends StatefulWidget {
   final String androidId;
@@ -15,12 +15,12 @@ class SigmobAdNativeWidget extends StatefulWidget {
 
   const SigmobAdNativeWidget(
       {Key? key,
-        required this.androidId,
-        required this.iosId,
-        required this.width,
-        required this.height,
-        this.userId,
-        this.callBack})
+      required this.androidId,
+      required this.iosId,
+      required this.width,
+      required this.height,
+      this.userId,
+      this.callBack})
       : super(key: key);
 
   @override
@@ -43,9 +43,7 @@ class _KSAdNativeWidgetState extends State<SigmobAdNativeWidget> {
     super.initState();
     _width = widget.width;
     _height = widget.height;
-    setState(() {
-
-    });
+    setState(() {});
   }
 
   @override
@@ -63,7 +61,7 @@ class _KSAdNativeWidgetState extends State<SigmobAdNativeWidget> {
             "androidId": widget.androidId,
             "width": widget.width,
             "height": widget.height,
-            "userId":widget.userId ?? "",
+            "userId": widget.userId ?? "",
           },
           onPlatformViewCreated: _registerChannel,
           creationParamsCodec: const StandardMessageCodec(),
@@ -79,7 +77,7 @@ class _KSAdNativeWidgetState extends State<SigmobAdNativeWidget> {
             "iosId": widget.iosId,
             "width": widget.width,
             "height": widget.height,
-            "userId":widget.userId ?? "",
+            "userId": widget.userId ?? "",
           },
           onPlatformViewCreated: _registerChannel,
           creationParamsCodec: const StandardMessageCodec(),
@@ -100,8 +98,11 @@ class _KSAdNativeWidgetState extends State<SigmobAdNativeWidget> {
   Future<dynamic> _platformCallHandler(MethodCall call) async {
     print("${call.method} == ${call.arguments}");
     switch (call.method) {
-    //显示广告
+      //显示广告
       case SigmobAdMethod.onShow:
+        if (widget.callBack?.onShow != null) {
+          widget.callBack?.onShow!();
+        }
         Map map = call.arguments;
         if (mounted) {
           setState(() {
@@ -110,33 +111,30 @@ class _KSAdNativeWidgetState extends State<SigmobAdNativeWidget> {
             _isShowAd = true;
           });
         }
-        widget.callBack?.onShow!();
         break;
-    //广告加载失败
+      //广告加载失败
       case SigmobAdMethod.onFail:
+        Map map = call.arguments;
+        widget.callBack?.onFail!(map["message"]);
         if (mounted) {
           setState(() {
             _isShowAd = false;
           });
         }
-        Map map = call.arguments;
-        widget.callBack?.onFail!(map["message"]);
         break;
-    //点击
+      //点击
       case SigmobAdMethod.onClick:
         widget.callBack?.onClick!();
         break;
-    //关闭
+      //关闭
       case SigmobAdMethod.onClose:
+        widget.callBack?.onClose!();
         if (mounted) {
           setState(() {
             _isShowAd = false;
           });
         }
-        widget.callBack?.onClose!();
         break;
     }
   }
 }
-
-

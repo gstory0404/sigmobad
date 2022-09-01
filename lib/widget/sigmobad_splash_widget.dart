@@ -98,35 +98,43 @@ class _SigmobAdSplashWidgetState extends State<SigmobAdSplashWidget> {
     switch (call.method) {
       //显示广告
       case SigmobAdMethod.onShow:
+        if (widget.callBack?.onShow != null) {
+          widget.callBack?.onShow!();
+        }
         if (mounted) {
           setState(() {
             _isShowAd = true;
           });
         }
-        widget.callBack?.onShow!();
         break;
       //广告加载失败
       case SigmobAdMethod.onFail:
+        if (widget.callBack?.onFail != null) {
+          Map map = call.arguments;
+          widget.callBack?.onFail!(map["message"]);
+        }
         if (mounted) {
           setState(() {
             _isShowAd = false;
           });
         }
-        Map map = call.arguments;
-        widget.callBack?.onFail!(map["message"]);
         break;
       //点击
       case SigmobAdMethod.onClick:
-        widget.callBack?.onClick!();
+        if (widget.callBack?.onClick != null) {
+          widget.callBack?.onClick!();
+        }
         break;
       //关闭
       case SigmobAdMethod.onClose:
+        if (widget.callBack?.onClose != null) {
+          widget.callBack?.onClose!();
+        }
         if (mounted) {
           setState(() {
             _isShowAd = false;
           });
         }
-        widget.callBack?.onClose!();
         break;
     }
   }
