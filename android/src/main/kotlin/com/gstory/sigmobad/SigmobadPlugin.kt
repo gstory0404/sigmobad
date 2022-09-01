@@ -2,7 +2,6 @@ package com.gstory.sigmobad
 
 import android.app.Activity
 import android.content.Context
-import android.util.Log
 import androidx.annotation.NonNull
 import com.gstory.sigmobad.interstitial.SigmobAdInterstitial
 import com.gstory.sigmobad.native.SigmobAdNativeViewFactory
@@ -68,24 +67,24 @@ class SigmobadPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         //注册初始化
         when (call.method) {
             "register" -> {
-                result.success(true)
                 val appId = call.argument<String>("androidId")
                 val appKey = call.argument<String>("androidAppKey")
                 val debug = call.argument<Boolean>("debug")
                 val personalized = call.argument<Boolean>("personalized")
                 val ads = WindAds.sharedAds()
-                //是否显示日志
+                   // 是否显示日志
                 SigmobLogUtil.setAppName("sigmobad")
                 SigmobLogUtil.setShow(debug!!)
                 ads.isDebugEnable = debug
                 //个性化推荐开关
                 ads.isPersonalizedAdvertisingOn = personalized!!
                 ads.startWithOptions(applicationContext, WindAdOptions(appId, appKey))
-
+                result.success(ads.isInit)
             }
             //sdk版本
             "getSDKVersion" -> {
                 result.success(WindAds.getVersion())
+//                result.success("123")
             }
             //预加载激励广告
             "loadRewardAd" -> {
