@@ -175,8 +175,4 @@ class NativeAdRender {
             mCTAButton?.visibility = View.INVISIBLE
         }
     }
-
-    companion object {
-        private const val TAG = "windSDK"
-    }
 }

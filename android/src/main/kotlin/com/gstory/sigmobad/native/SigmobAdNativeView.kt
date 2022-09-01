@@ -3,7 +3,10 @@ package com.gstory.sigmobad.native
 import android.app.Activity
 import android.content.Context
 import android.view.View
+import android.view.ViewTreeObserver
+import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.widget.FrameLayout
+import com.gstory.sigmobad.*
 import com.gstory.sigmobad.utils.SigmobLogUtil
 import com.sigmob.windad.WindAdError
 import com.sigmob.windad.natives.NativeADEventListener
@@ -128,9 +131,6 @@ internal class SigmobAdNativeView(
 
             override fun onAdDetailShow() {
                 SigmobLogUtil.d("信息流广告详情显示")
-                var map: MutableMap<String, Any?> =
-                    mutableMapOf("width" to width, "height" to height)
-                channel?.invokeMethod("onShow",map)
             }
 
             override fun onAdDetailDismiss() {
@@ -188,6 +188,14 @@ internal class SigmobAdNativeView(
                 SigmobLogUtil.d("信息流广告视频完成播放")
             }
 
+        })
+        nativeAdView?.viewTreeObserver?.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                nativeAdView.viewTreeObserver?.removeOnGlobalLayoutListener(this)
+                var map: MutableMap<String, Any?> =
+                    mutableMapOf("width" to nativeAdView.measuredWidth, "height" to nativeAdView.measuredHeight)
+                channel?.invokeMethod("onShow",map)
+            }
         })
         container?.addView(nativeAdView)
     }
