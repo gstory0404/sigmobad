@@ -37,7 +37,7 @@ class SigmobadPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         //注册信息流广告
         mFlutterPluginBinding?.platformViewRegistry?.registerViewFactory(
             "com.gstory.sigmobad/NativeView",
-            SigmobAdNativeViewFactory(mFlutterPluginBinding!!.binaryMessenger)
+            SigmobAdNativeViewFactory(mFlutterPluginBinding!!.binaryMessenger,mActivity)
         )
     }
 

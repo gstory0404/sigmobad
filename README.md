@@ -1,7 +1,7 @@
 # Sigmob广告 Flutter版本
 
 <p>
-<a href="https://pub.flutter-io.cn/packages/sigmobad"><img src=https://img.shields.io/badge/sigmobad-v0.0.5-success></a>
+<a href="https://pub.flutter-io.cn/packages/sigmobad"><img src=https://img.shields.io/badge/sigmobad-v0.0.6-success></a>
 </p>
 
 ## 官方文档
@@ -28,7 +28,7 @@
 ## 集成步骤
 #### 1、pubspec.yaml
 ```Dart
-sigmobad: ^0.0.5
+sigmobad: ^0.0.6
 ```
 引入
 ```Dart

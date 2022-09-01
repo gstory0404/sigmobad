@@ -25,7 +25,7 @@ import io.flutter.plugin.platform.PlatformView
  */
 
 internal class SigmobAdNativeView(
-    var context: Context,
+    var context: Activity,
     var messenger: BinaryMessenger,
     id: Int,
     params: Map<String?, Any?>
@@ -96,7 +96,7 @@ internal class SigmobAdNativeView(
     private fun showNativeView(data: WindNativeAdData) {
         //媒体自渲染的View
         val adRender = NativeAdRender()
-        data.setDislikeInteractionCallback(context as Activity?,object :WindNativeAdData.DislikeInteractionCallback{
+        data.setDislikeInteractionCallback(context,object :WindNativeAdData.DislikeInteractionCallback{
             override fun onShow() {
 
             }
@@ -193,7 +193,7 @@ internal class SigmobAdNativeView(
             override fun onGlobalLayout() {
                 nativeAdView.viewTreeObserver?.removeOnGlobalLayoutListener(this)
                 var map: MutableMap<String, Any?> =
-                    mutableMapOf("width" to nativeAdView.measuredWidth, "height" to nativeAdView.measuredHeight)
+                    mutableMapOf("width" to nativeAdView.width, "height" to nativeAdView.height)
                 channel?.invokeMethod("onShow",map)
             }
         })
