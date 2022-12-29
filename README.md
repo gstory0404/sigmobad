@@ -1,7 +1,11 @@
 # Sigmob广告 Flutter版本
 
 <p>
-<a href="https://pub.flutter-io.cn/packages/sigmobad"><img src=https://img.shields.io/badge/sigmobad-v1.0.0-success></a>
+<a href="https://pub.flutter-io.cn/packages/sigmobad"><img src=https://img.shields.io/pub/v/sigmobad?color=orange></a>
+<a href="https://pub.flutter-io.cn/packages/sigmobad"><img src=https://img.shields.io/pub/likes/sigmobad></a>
+<a href="https://pub.flutter-io.cn/packages/sigmobad"><img src=https://img.shields.io/pub/points/sigmobad></a>
+<a href="https://github.com/gstory0404/sigmobad/commits"><img src=https://img.shields.io/github/last-commit/gstory0404/sigmobad></a>
+<a href="https://github.com/gstory0404/sigmobad"><img src=https://img.shields.io/github/stars/gstory0404/sigmobad></a>
 </p>
 
 ## 官方文档
