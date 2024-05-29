@@ -104,8 +104,7 @@
 //广告加载失败
 - (void)nativeAdsManager:(WindNativeAdsManager *)adsManager didFailWithError:(NSError *)error{
     [[SigmobLogUtil sharedInstance] print:([NSString stringWithFormat:@"信息流广告拉取失败 %@",error])];
-    NSDictionary *dictionary = @{@"message":error.description};
-    [_channel invokeMethod:@"onFail" arguments:dictionary result:nil];
+    [_channel invokeMethod:@"onFail" arguments:[NSString stringWithFormat:@"%@",error] result:nil];
 }
 
 #pragma mark - WindNativeAdViewDelegate

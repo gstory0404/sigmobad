@@ -67,7 +67,7 @@
  */
 - (void)intersititialAdDidLoad:(WindNewIntersititialAd *)intersititialAd didFailWithError:(NSError *)error{
     [[SigmobLogUtil sharedInstance] print:([NSString stringWithFormat:@"激励广告加载失败 %@",error.description])];
-    NSDictionary *dictionary = @{@"adType":@"interstitialAd",@"onAdMethod":@"onFail",@"message":error.description};
+    NSDictionary *dictionary = @{@"adType":@"interstitialAd",@"onAdMethod":@"onFail",@"message":[NSString stringWithFormat:@"%@",error]};
     [[SigmobAdEvent sharedInstance] sentEvent:dictionary];
 }
 

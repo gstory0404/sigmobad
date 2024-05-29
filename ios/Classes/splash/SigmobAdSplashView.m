@@ -102,8 +102,7 @@
  */
 -(void)onSplashAdLoadFail:(WindSplashAdView *)splashAdView error:(NSError *)error{
     [[SigmobLogUtil sharedInstance] print:([NSString stringWithFormat:@"开屏广告加载失败 %@",error])];
-    NSDictionary *dictionary = @{@"message":error.description};
-    [_channel invokeMethod:@"onFail" arguments:dictionary result:nil];
+    [_channel invokeMethod:@"onFail" arguments:[NSString stringWithFormat:@"%@",error] result:nil];
 }
 
 /**
@@ -119,8 +118,7 @@
  */
 -(void)onSplashAdFailToPresent:(WindSplashAdView *)splashAdView withError:(NSError *)error{
     [[SigmobLogUtil sharedInstance] print:([NSString stringWithFormat:@"开屏广告展示失败 %@",error])];
-    NSDictionary *dictionary = @{@"message":error.description};
-    [_channel invokeMethod:@"onFail" arguments:dictionary result:nil];
+    [_channel invokeMethod:@"onFail" arguments:[NSString stringWithFormat:@"%@",error] result:nil];
 }
 
 

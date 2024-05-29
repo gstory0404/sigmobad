@@ -114,8 +114,7 @@ class _KSAdNativeWidgetState extends State<SigmobAdNativeWidget> {
         break;
       //广告加载失败
       case SigmobAdMethod.onFail:
-        Map map = call.arguments;
-        widget.callBack?.onFail!(map["message"]);
+        widget.callBack?.onFail!(call.arguments);
         if (mounted) {
           setState(() {
             _isShowAd = false;

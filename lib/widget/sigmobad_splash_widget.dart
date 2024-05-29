@@ -110,8 +110,7 @@ class _SigmobAdSplashWidgetState extends State<SigmobAdSplashWidget> {
       //广告加载失败
       case SigmobAdMethod.onFail:
         if (widget.callBack?.onFail != null) {
-          Map map = call.arguments;
-          widget.callBack?.onFail!(map["message"]);
+          widget.callBack?.onFail!(call.arguments);
         }
         if (mounted) {
           setState(() {
