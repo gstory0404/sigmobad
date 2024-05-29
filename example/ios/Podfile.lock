@@ -8,12 +8,10 @@ PODS:
     - Flutter
     - Masonry
     - SDWebImage (= 5.12.1)
-    - SigmobAd-iOS (= 4.5.0)
-  - SigmobAd-iOS (4.5.0):
-    - SigmobAd-iOS/WindSDK (= 4.5.0)
-  - SigmobAd-iOS/WindFoundation (4.5.0)
-  - SigmobAd-iOS/WindSDK (4.5.0):
-    - SigmobAd-iOS/WindFoundation
+    - SigmobAd-iOS (= 4.13.0)
+  - SigmobAd-iOS (4.13.0):
+    - SigmobAd-iOS/WindSDK (= 4.13.0)
+  - SigmobAd-iOS/WindSDK (4.13.0)
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
@@ -32,12 +30,12 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/sigmobad/ios"
 
 SPEC CHECKSUMS:
-  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
-  sigmobad: 9cbfe3e1f7fa40d9cabe7124fc9f3a7b1ed5b69f
-  SigmobAd-iOS: 6c9882bb65dbdfee24adb910b469a9fbc5154862
+  sigmobad: d1014af183ca9002033293d7256e385f3f1b4b5c
+  SigmobAd-iOS: a813743e943bac18e19828e58c870fafe34478fa
 
-PODFILE CHECKSUM: bfd8cb9c5a07b05028ccd5e7d27153963d4bba14
+PODFILE CHECKSUM: a69b4e639ad4e65c02c4d8b5b17642141111f056
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.15.2

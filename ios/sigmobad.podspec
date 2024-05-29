@@ -18,7 +18,7 @@ sigmob广告flutter版
   s.static_framework = true
   s.dependency 'Flutter'
   s.platform = :ios, '9.0'
-  s.dependency 'SigmobAd-iOS', '4.5.0'
+  s.dependency 'SigmobAd-iOS', '4.13.0'
   s.dependency 'SDWebImage', '5.12.1'
   s.dependency 'Masonry'
 
