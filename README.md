@@ -10,6 +10,7 @@
 <p>
 <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=VhD0AZSmzvsD3fu7CeQFkzpBQHMHANb1&authKey=W7JGJ0HKklyhP1jyBvbTF2Dkw0cq4UmhVSx2zXVdIm6n48Xrto%2B7%2B1n9jbkAadyF&noverify=0&group_code=649574038"><img src=https://img.shields.io/badge/flutter%E4%BA%A4%E6%B5%81%E7%BE%A4-649574038-blue></a>
 <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=9I9lyXewEsEnx0f00EOF_9hEcFmG5Bmg&authKey=AJfQ8%2FhOLcoJ0p5B16EITjFav1IIs3UAerZSUsWZfa0evuklgxibHti51AYlZgI3&noverify=0&group_code=769626410"><img src=https://img.shields.io/badge/flutter%E4%BA%A4%E6%B5%81%E7%BE%A42-769626410-blue></a>
+<a href="https://qm.qq.com/q/4MSgZuKimc"><img src=https://img.shields.io/badge/flutter%E6%8F%92%E4%BB%B6%E5%8F%8D%E9%A6%88-662186116-blue></a>
 </p>
 
 ## 官方文档
@@ -22,14 +23,15 @@
 
 ## 本地开发环境
 ```
-[✓] Flutter (Channel stable, 3.22.1, on macOS 14.5 23F79 darwin-x64, locale zh-Hans-CN)
+[✓] Flutter (Channel stable, 3.24.5, on macOS 14.6.1 23G93 darwin-x64, locale zh-Hans-CN)
 [✓] Android toolchain - develop for Android devices (Android SDK version 33.0.1)
-[✓] Xcode - develop for iOS and macOS (Xcode 15.2)
+[✓] Xcode - develop for iOS and macOS (Xcode 16.1)
 [✓] Chrome - develop for the web
 [✓] Android Studio (version 2022.1)
-[✓] IntelliJ IDEA Ultimate Edition (version 2024.1.2)
-[✓] VS Code (version 1.89.1)
-[✓] Connected device (3 available)
+[✓] Android Studio (version 2022.3)
+[✓] IntelliJ IDEA Ultimate Edition (version 2023.2.2)
+[✓] VS Code (version 1.95.3)
+[✓] Connected device (4 available)
 [✓] Network resources
 ```
 
