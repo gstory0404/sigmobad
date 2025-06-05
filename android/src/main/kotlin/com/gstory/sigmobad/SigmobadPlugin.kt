@@ -8,6 +8,8 @@ import com.gstory.sigmobad.native.SigmobAdNativeViewFactory
 import com.gstory.sigmobad.reward.SigmobAdReward
 import com.gstory.sigmobad.splash.SigmobAdSplashViewFactory
 import com.gstory.sigmobad.utils.SigmobLogUtil
+import com.sigmob.windad.OnInitializationListener
+import com.sigmob.windad.OnStartListener
 import com.sigmob.windad.WindAdOptions
 import com.sigmob.windad.WindAds
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -37,7 +39,7 @@ class SigmobadPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         //注册信息流广告
         mFlutterPluginBinding?.platformViewRegistry?.registerViewFactory(
             "com.gstory.sigmobad/NativeView",
-            SigmobAdNativeViewFactory(mFlutterPluginBinding!!.binaryMessenger,mActivity)
+            SigmobAdNativeViewFactory(mFlutterPluginBinding!!.binaryMessenger, mActivity)
         )
     }
 
@@ -72,19 +74,39 @@ class SigmobadPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 val debug = call.argument<Boolean>("debug")
                 val personalized = call.argument<Boolean>("personalized")
                 val ads = WindAds.sharedAds()
-                   // 是否显示日志
+                // 是否显示日志
                 SigmobLogUtil.setAppName("sigmobad")
                 SigmobLogUtil.setShow(debug!!)
+                var options = WindAdOptions(appId, appKey)
                 ads.isDebugEnable = debug
                 //个性化推荐开关
                 ads.isPersonalizedAdvertisingOn = personalized!!
-                ads.startWithOptions(applicationContext, WindAdOptions(appId, appKey))
-                result.success(ads.isInit)
+                ads.init(applicationContext, options, object : OnInitializationListener {
+                    override fun onInitializationSuccess() {
+                        SigmobLogUtil.d("Sigmob 初始化成功")
+                        ads.start(object : OnStartListener {
+                            override fun onStartSuccess() {
+                                SigmobLogUtil.d("Sigmob 启动成功")
+                                result.success(true)
+                            }
+
+                            override fun onStartFail(error: String?) {
+                                SigmobLogUtil.d("Sigmob 启动失败$error")
+                                result.success(false)
+                            }
+                        }
+                        )
+                    }
+
+                    override fun onInitializationFail(error: String?) {
+                        SigmobLogUtil.d("Sigmob 初始化失败$error")
+                        result.success(false)
+                    }
+                })
             }
             //sdk版本
             "getSDKVersion" -> {
                 result.success(WindAds.getVersion())
-//                result.success("123")
             }
             //预加载激励广告
             "loadRewardAd" -> {
@@ -106,6 +128,7 @@ class SigmobadPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 SigmobAdInterstitial.showInterstitialAd()
                 result.success(true)
             }
+
             else -> {
                 result.notImplemented()
             }
